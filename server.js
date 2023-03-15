@@ -16,13 +16,6 @@ app.get('/', function(req, res){
     res.send('hallo');
 })
 
-app.get('/test', (req, res)=>{
-    const result = {
-        code: 0,
-        message: 'success'
-    };
-    res.send(result);
-})
 
 const result = [
     {id:'1', textTitle:'title1', createdDate:'date'},
@@ -34,11 +27,18 @@ const result = [
 
 let id = 5;
 app.post('/post', (req, res)=>{
-    var dt = new Date();
-    req.body.id = ++id;
-    req.body.createdDate = `${dt.getMonth()+1}/${dt.getDate()}`
-    result.push(req.body);
-    console.log(req.body);
+    if(req.body){
+        var dt = new Date();
+        req.body.id = ++id;
+        req.body.createdDate = `${dt.getMonth()+1}/${dt.getDate()}`
+        result.push(req.body);
+        console.log(req.body);
+        res.send('success');
+    }
+    else{
+        res.send('failed');
+    }
+    
 })
 
 app.get('/list', (req, res)=>{
