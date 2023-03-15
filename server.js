@@ -18,11 +18,11 @@ app.get('/', function(req, res){
 
 
 const result = [
-    {id:'1', textTitle:'title1', createdDate:'date'},
-    {id:'2', textTitle:'title2', createdDate:'date'},
-    {id:'3', textTitle:'title3', createdDate:'date'},
-    {id:'4', textTitle:'title4', createdDate:'date'},
-    {id:'5', textTitle:'title5', createdDate:'date'},
+    {id: 1, textCategory:'front', textTitle:'title1', textBody:'bodybodybody1', createdDate:'date'},
+    {id: 2, textCategory:'front', textTitle:'title2', textBody:'bodybodybody2', createdDate:'date'},
+    {id: 3, textCategory:'front', textTitle:'title3', textBody:'bodybodybody3', createdDate:'date'},
+    {id: 4, textCategory:'front', textTitle:'title4', textBody:'bodybodybody4', createdDate:'date'},
+    {id: 5, textCategory:'front', textTitle:'title5', textBody:'bodybodybody5', createdDate:'date'},
 ]
 
 let id = 5;
@@ -44,4 +44,10 @@ app.post('/post', (req, res)=>{
 app.get('/list', (req, res)=>{
     console.log('get detected');
     res.send(result); 
+})
+
+app.get('/list/:id', (req, res)=>{
+    console.log('detail get detected');
+    console.log(result[req.params.id-1])
+    res.send(result[req.params.id-1]); 
 })
